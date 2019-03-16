@@ -1,7 +1,8 @@
 #LAB is based on script provided by Chris Polawika - https://blog.polewiak.pl/2017/06/12/mikrotik-w-azure-step-by-step/
 #It has been updated and changed as the approach is different. 
 
-Select-AzureRmContext 
+#Choose the proper Azure Subscription and Context if required
+#Select-AzureRmContext 
 
 #name of the storage account, in which you have placed the image
 $StorageAccountName = "mikrotikvhdsa"
