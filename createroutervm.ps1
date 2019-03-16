@@ -1,17 +1,16 @@
 #LAB is based on script provided by Chris Polawika - https://blog.polewiak.pl/2017/06/12/mikrotik-w-azure-step-by-step/
 #It has been updated and changed as the approach is different. 
 
-#Choose the proper Azure Subscription and Context if required
 #Select-AzureRmContext 
 
 #name of the storage account, in which you have placed the image
-$StorageAccountName = "mikrotikvhdsa"
+$StorageAccountName = "mikrotikvhdimg"
 #name of file you have uploaded to storage account
 $MikrotikVHD = "chr-6.42.12.vhd"
 #name of the container to which you have uploaded the file
 $storageContainerName="vhds"
 #name of the resource group in which you will create the mikrotik VM
-$ResourceGroup = "mikrotikrg"
+$ResourceGroup = "SecWorkshop"
 #location of resources
 $Location = "westeurope"
 #vnet, in which you will place mikrotik
@@ -21,7 +20,7 @@ $SubnetName_ether1 = "wfe-subnet"
 #subnet, in which you will place second NIC, which will get the traffic from VNET
 $SubnetName_ether2 = "backend-subnet"
 #name of the Virtual Machine
-$VMName = "mikrotikrouter-vm01"
+$VMName = "mikrotikrouter-vm02"
 #size of the VM
 $VMSize = "Standard_DS1_v2"
 
@@ -30,7 +29,7 @@ $StorageAccount = Get-AzureRmStorageAccount | Where-Object { $_.StorageAccountNa
 $urlOfUploadedVhd = "https://"+$StorageAccountName+".blob.core.windows.net/"+$storageContainerName+"/"+$MikrotikVHD
 
 # Select VNET
-$VNET = Get-AzureRmVirtualNetwork | Where-Object { $_.Name -like $VNETName }
+$VNET = Get-AzureRmVirtualNetwork -ResourceGroupName $ResourceGroup | Where-Object { $_.Name -like $VNETName }
 
 # Select Subnets
 $Subnet_ether1 = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNET -Name $SubnetName_ether1
