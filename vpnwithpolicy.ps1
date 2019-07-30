@@ -1,3 +1,4 @@
+#doc - https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell
 $VNet1       = "VNet1"
 $Connection1 = "corenetwork_s2sconnection"
 $RG1         = "sharedservices_rg"
